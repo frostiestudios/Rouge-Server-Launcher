@@ -18,7 +18,7 @@ def save(btn):
 def server(btn):
     if btn == "Start":
         host_name = socket.gethostbyname(socket.gethostname())
-        port_number = 5050
+        port_number = 5151
         # Create an HTTP server
         httpd = HTTPServer((host_name, port_number), SimpleHTTPRequestHandler)
         # Start the server in a separate thread
@@ -49,7 +49,7 @@ def openbrowser(btn):
 
 def move_file(btn):
     file_path = app.getEntry("File")
-    destination = 'htdocs/files/'
+    destination = 'filestorage'
     os.rename(file_path, f"{destination}/{os.path.basename(file_path)}")
 
     file_path = app.getEntry("File")
@@ -58,7 +58,7 @@ def move_file(btn):
     app.infoBox("Success", "File moved successfully.")
 
 
-app = gui()
+app = gui("RSL","400x200",useTtk=True)
 
 app.setToolbarPinned(pinned=True)
 # Add a button to start the server
